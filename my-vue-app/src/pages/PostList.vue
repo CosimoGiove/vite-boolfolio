@@ -1,29 +1,29 @@
 <script>
 import axios from "axios";
-export default{
-    name:"PostList",
+export default {
+    name: "PostList",
     data() {
-    return {
-      projects: [],
-      URL: "http://localhost:8000",
-      uri: "/api/projects"
+        return {
+            projects: [],
+            URL: "http://localhost:8000",
+            uri: "/api/projects"
 
-    }
-  },
-  components: {
+        }
+    },
+    components: {
 
-  },
-  methods: {
-    project() {
-      axios.get(this.URL + this.uri).then(response => {
-        this.projects = response.data.results;
-        console.log(response)
-      })
+    },
+    methods: {
+        project() {
+            axios.get(this.URL + this.uri).then(response => {
+                this.projects = response.data.results;
+                console.log(response)
+            })
+        }
+    },
+    mounted() {
+        this.project();
     }
-  },
-  mounted() {
-    this.project();
-  }
 }
 </script>
 <template>
@@ -33,21 +33,30 @@ export default{
                 <div class="card-body">
                     <h5 class="card-title">
                         <h2>titolo:</h2>
-                        {{ project.title }}</h5>
+                        {{ project.title }}
+                    </h5>
                     <p class="card-text">
-                        <h2>descrizione:</h2>
-                        <div>
-                            {{ project.description }}
-                        </div>
+
+                    <div>
+                        <h4>linguaggio utilizzato:</h4>
+                        {{ project.language }}
+                    </div>
+                    <div>
+                        <h4>frameworks utilizzati:</h4>
+                        {{ project.frameworks }}
+                    </div>
+                    <div>
+                        <h4>descrizione:</h4>
+                        {{ project.description }}
+                    </div>
                     </p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <style scoped>
-.container-card{
+.container-card {
     justify-content: space-between;
     flex-wrap: wrap;
 
