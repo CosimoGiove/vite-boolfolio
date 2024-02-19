@@ -4,9 +4,9 @@ export default {
     name: "PostList",
     data() {
         return {
-            projects: [],
+            project: null,
             URL: "http://localhost:8000",
-            uri: "/api/projects"
+            uri: "/api/project"
 
         }
     },
@@ -14,22 +14,26 @@ export default {
 
     },
     methods: {
-        project() {
-            axios.get(this.URL + this.uri).then(response => {
-                this.projects = response.data.results;
-                console.log(response)
+        getProject() {
+            // Async operation
+            axios.get(this.URL + this.uri+"/" + this.$route.params.slug)
+            .then(response => {
+                console.log(response);
+                this.project = response.data.data;
             })
         }
     },
     mounted() {
-        this.project();
+        this.getProject();
     }
 }
 </script>
 <template>
     <div>
-        <div class="container-card container d-flex">
-            <div class="card mb-3" v-for="project in projects" style="width: 18rem;">
+        <div v-if="!project">Loading...</div>
+        <div v-else class="container-card container d-flex">
+            <!-- <div class="card mb-3" v-for="project in projects" style="width: 18rem;"> -->
+            <div class="card mb-3" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">
                         <h2>titolo:</h2>

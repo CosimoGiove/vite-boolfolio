@@ -17,7 +17,6 @@ export default{
     project() {
       axios.get(this.URL + this.uri).then(response => {
         this.projects = response.data.results;
-        console.log(response)
       })
     }
   },
@@ -37,7 +36,7 @@ export default{
                     <p class="card-text">
                     </p>
                     <button class="btn btn-primary">
-                        <router-link class="nav-link" to="/post">visualizza progetto</router-link>
+                        <router-link class="nav-link" :to="{ name:'post', params: { slug: project.id }}">visualizza progetto</router-link>
                     </button>
                 </div>
             </div>

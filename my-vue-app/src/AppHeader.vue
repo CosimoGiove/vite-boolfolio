@@ -13,14 +13,18 @@ export default {
             </div>
             <div>
                 <ul>
+                    <!-- <li>
+                        <router-link class="nav-link" :to="{ name: 'post' }">progetti</router-link>
+                    </li> -->
                     <li>
-                        <router-link class="nav-link" to="/post">progetti</router-link>
+                        <router-link :to="{ name: 'about' }" class="nav-link">
+                            about
+                        </router-link>
                     </li>
                     <li>
-                        <router-link class="nav-link" to="/about">about</router-link>
-                    </li>
-                    <li>
-                        <router-link class="nav-link" to="/">home</router-link>
+                        <router-link :to="{ name: 'home' }" class="nav-link">
+                            home
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -38,11 +42,13 @@ h1 {
 ul {
     list-style: none;
     display: flex;
-    li{
+
+    li {
         margin-left: 40px;
-        
+
     }
-    li:hover{
+
+    li:hover {
         background-color: black;
         color: white;
         transform: scale(1.5);
@@ -50,7 +56,7 @@ ul {
     }
 }
 
-.contenitorenav{
+.contenitorenav {
     display: flex;
     justify-content: space-between;
     padding: 20px;

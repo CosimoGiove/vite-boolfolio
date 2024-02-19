@@ -1,7 +1,7 @@
 <script>
 export default {
     name: "app main",
-    props: ["projects"]
+
 }
 </script>
 
